@@ -1,0 +1,26 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<body>
+<h1 th:text="${value1}"></h1>
+<p th:text="${value2}">Hello World!</p>
+<p th:text="${value2.replace('Hello', 'Jello')}">Hello World!</p>
+<span th:text="${mybook.name}"></span><br />
+<span th:text="${mybook['name']}"></span><br />
+<span th:text="${mybook.price} + '원'"></span><br />
+<span th:text="'할인가: ' + ${mybook.price*0.8} + ' 원'"></span><br />
+<span th:text="|할인가: ${mybook.price*0.8} 원|"></span><br />
+<span th:text="${mybook.author.name}"></span><br />
+<div th:object="${mybook}">
+    <h2>책 정보</h2>
+    <span>저자명 : </span><span th:text="*{name}"></span><br />
+    <span>가격 : </span><span th:text="*{price}"></span><br />
+    <span>저자명 : </span><span th:text="*{author.name}"></span><br />
+</div>
+<a th:href="@{/template2}">template2</a><br />
+<a th:href="@{/template2(param1=1234)}">template2 with static param</a><br />
+<a th:href="@{/template2(param1=${value1})}">template2 with variable param</a><br />
+<a th:href="@{/template2/{id}(id=${value1}, param1=${value1})}">template2 with path variable and param</a><br />
+<form th:action="@{/action}">
+    <input type="submit" />
+</form>
+</body>
+</html>
